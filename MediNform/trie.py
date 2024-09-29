@@ -37,7 +37,20 @@ class Trie:
 
             curr = curr.child[index]
 
-        return curr.wordend  
+        return curr.wordend 
+    
+    def search_prefix(self, prefix):
+        curr = self.root
+
+    # Traverse through each character in the prefix
+        for c in prefix:
+            index = ord(c) - ord('a')
+            if curr.child[index] is None:  # If the child doesn't exist, the prefix is not present
+                return False
+            curr = curr.child[index]  # Move to the next child node
+    
+    
+        return True
 
 def clean_and_concatenate_words(line):
     # Remove special characters (except spaces) and convert to lowercase
@@ -72,6 +85,8 @@ for word in cleaned_words:
     trie.add(word)
 
 
-word_to_search = "prostatecancer".lower()  # Ensure word is lowercase
-is_found = trie.search_key(word_to_search)
-print(f"Word '{word_to_search}' found in Trie:", is_found)
+word_to_search = "prostate".lower()  # Ensure word is lowercase
+is_prefix = trie.search_prefix(word_to_search)
+print(is_prefix)
+# is_found = trie.search_key(word_to_search)
+# print(f"Word '{word_to_search}' found in Trie:", is_found)
