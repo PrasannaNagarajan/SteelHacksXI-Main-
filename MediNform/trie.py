@@ -63,30 +63,16 @@ def clean_and_concatenate_words(line):
     return concatenated_word
 
 
-def process_input_file(input_file):
- 
-    with open(input_file, 'r') as file:
-        lines = file.readlines()
-
-    # Clean and concatenate each line
-    cleaned_words = [clean_and_concatenate_words(line) for line in lines]
-    
-    return cleaned_words
-
-
 input_file = "medical_wordlist.txt"
 trie = Trie()
 
-# Get the list of cleaned and concatenated words
-cleaned_words = process_input_file(input_file)
+file = open(input_file, encoding="utf8")
+    
+while True:
+    line = file.readline()
 
+    if line == "":
+        break
 
-for word in cleaned_words:
+    word = clean_and_concatenate_words(line)
     trie.add(word)
-
-
-word_to_search = "prostate".lower()  # Ensure word is lowercase
-is_prefix = trie.search_prefix(word_to_search)
-print(is_prefix)
-# is_found = trie.search_key(word_to_search)
-# print(f"Word '{word_to_search}' found in Trie:", is_found)
