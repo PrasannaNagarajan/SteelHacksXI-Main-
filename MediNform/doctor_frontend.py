@@ -29,19 +29,27 @@ class MainWindow(QMainWindow):
 
         #patient name text box
         self.name_label = QLabel("Patient Name") #QlineEdit short, qtextedit long - notes(can be exported to txt)
+        #self.name_label.setContentsMargins(60,0,0,0)
         self.name_input = QLineEdit()
         self.name_input.setFixedWidth(200)
         self.name_input.setStyleSheet("QLineEdit { border: 2px solid #000000; padding: 5px; }")
+        #self.name_input.setContentsMargins(0,0,0,0)
+
         #patient age text box
-        self.age_label = self.age_label = QLabel("Patient Age")
+        self.age_label = QLabel("Patient Age")
+        #self.age_label.setStyleSheet("QLineEdit{margin-left: 500px; }") #not shifting how we want
+        self.age_label.setContentsMargins(0,0,0,0)
         self.age_input = QLineEdit()
         self.age_input.setFixedWidth(50)
         self.age_input.setStyleSheet("QLineEdit { border: 2px solid #000000; padding: 5px; }")
+        #self.age_input.setContentsMargins(0,0,0,0)
+
         #align patient info in horizontal box
         self.patient_info.addWidget(self.name_label)
         self.patient_info.addWidget(self.name_input)
         self.patient_info.addWidget(self.age_label)
         self.patient_info.addWidget(self.age_input)
+        #self.patient_info.setContentsMargins(20,0,20,0)
 
         #Doc's notes box
         self.notes = QHBoxLayout()
