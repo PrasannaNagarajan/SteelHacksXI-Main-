@@ -88,7 +88,6 @@ class MainWindow(QMainWindow):
         #initialize main window
         self.setLayout(self.main_layout)
 
-
     def start_clicked(self):
         #button = QPushButton("Start Recording")
         #layout.addWidget(button)
