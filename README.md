@@ -52,3 +52,7 @@ This project is licensed under the GNU General Public License v3.0 - see License
 
 ## AI Use Notice
 ChatGPT was used to aid in the creation of MediNform for help with GUI development and for understanding of certain imports
+
+## Medical Library Notice
+Access to the ``medical_wordlist.txt`` file possible through:
+- https://github.com/CodeSante/medical-wordlist.git
