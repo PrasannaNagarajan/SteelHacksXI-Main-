@@ -2,6 +2,7 @@
 #and give a more desireable output
 
 import time
+import os
 import threading
 import speech_to_trie as sst
 import gemini_access as gem
@@ -11,12 +12,13 @@ from PyQt6.QtGui import QFont
 from PyQt6.QtWidgets import QApplication, QMainWindow, QHBoxLayout, QTextEdit, QWidget, QListWidget
 from PyQt6.QtCore import QSize
 
-class AudioProcessor(threading.Thread):
-    def __init__(self, update_function):
+class AudioProcessor():
+    def __init__(self, patient_window):
         super().__init__()
-        self.update_function = update_function
         self.running = True
         self.audio = None
+        self.fp = 0
+        self.patient_window = patient_window
 
     def run(self):
         while self.running:
@@ -27,34 +29,45 @@ class AudioProcessor(threading.Thread):
     def process_audio(self, audio):
         try:
             recognizer = sr.Recognizer()
-            output = recognizer.recognize_google(audio)
+            to_write = recognizer.recognize_google(audio)
+            
+            
 
-            # Splitting array of the output into individual words
-            output_arr = output.split(" ")
-            out = ""
-
-            for txt in output_arr:
-                txt = search_rec.clean_word(txt)
-
-                # Processing trie search
-                if search_rec.trie.search_prefix(search_rec.working_string + txt):
-                    search_rec.working_string += txt
-                elif search_rec.trie.search_key(search_rec.working_string):
-                    out = search_rec.gemini.prompt_gemini(search_rec.working_string)
-                    search_rec.working_string = ""
-                else:
-                    search_rec.working_string = ""
-
-            # Updating window
-            if out:
-                self.update_function(out)
-
+            #threading to work with text if text exists
+            if to_write != "":
+                thread = threading.Thread(target=self.process_text, args=(to_write,))
+                thread.start()
+            
         except sr.UnknownValueError:
             print("Could not understand audio.")
-            time.sleep(1)
         except sr.RequestError as e:
             print(f"Could not request results from Google Speech Recognition service; {e}")
 
+    def process_text(self, txt):
+        out = ""
+        split_txt = txt.split(" ")
+        
+        for t in split_txt:
+            txt = search_rec.clean_word(t)
+            
+            # Processing trie search
+            if search_rec.trie.search_prefix(search_rec.working_string + txt):
+                search_rec.working_string += txt
+            elif search_rec.trie.search_key(search_rec.working_string):
+                print(search_rec.working_string)
+                out = search_rec.gemini.prompt_gemini(search_rec.working_string)
+                search_rec.working_string = ""
+            else:
+                search_rec.working_string = ""
+            
+        # Updating window
+        if out != "":
+            self.update_function(out)
+            
+    def update_function(self, text):
+        print(text)
+        self.patient_window.add_to_list(text)
+    
     def set_audio(self, audio):
         self.audio = audio
 
@@ -65,16 +78,19 @@ class PatientWindow(QMainWindow):
     def __init__(self, age):
         super().__init__()
         global search_rec
-
+        
         # Setting up search in trie
-        search_rec = sst.SearchSpeech(age)
+        search_rec = sst.SearchSpeech()
+        
+        #setting up aaudio processor
+        self.audio_processor = AudioProcessor(self)
         
         #setting list
         self.terms_list = []
 
         # Setting window information
         self.setWindowTitle("User Device")
-        self.setFixedSize(QSize(720, 500))
+        self.setFixedSize(QSize(760, 700))
 
         # Creating central widget
         central_widget = QWidget()
@@ -100,9 +116,6 @@ class PatientWindow(QMainWindow):
         # Set the central widget
         self.setCentralWidget(central_widget)
 
-        self.audio_processor = AudioProcessor(self.add_to_list)
-        self.audio_processor.start()  # Start the audio processing thread
-
         # Build gemini instance
         search_rec.gemini = gem.Gemini(age)
 
@@ -118,16 +131,13 @@ class PatientWindow(QMainWindow):
         self.list_widget.itemClicked.connect(self.on_item_click)
         
         # Start listening in background
-        self.r.listen_in_background(self.m, self.callback_function) #phrase_time_limit = 3)
+        self.r.listen_in_background(self.m, self.callback, phrase_time_limit=5) #phrase_time_limit = 3)
         
         print("Begin speaking")
 
     def on_item_click(self, item):
         index = self.list_widget.row(item)
         self.text_edit.setText(self.terms_list[index])
-    
-    def callback_function(self, recognizer, audio):
-        self.audio_processor.set_audio(audio)  # Pass the audio to the processing thread
 
     def add_to_list(self, value):    
         if value != None:
@@ -163,7 +173,7 @@ class PatientWindow(QMainWindow):
                     to_add += "\n\nSide Effects:\n\n"
                     
                     for se in term_info[4].split(":"):
-                        to_add += "➼" + trt + "\n\n"
+                        to_add += "➼" + se + "\n\n"
                     
                     self.terms_list.append(to_add)
                 elif term_info[0] == "Anatomical Term":
@@ -174,8 +184,11 @@ class PatientWindow(QMainWindow):
                 self.list_widget.addItem(term_info[1])
             except:
                 #gemini output error
-                print("Gemini made an oopsie")
-
+                print("Gemini made an oopsie")          
+    
+    def callback(self, recognizer, audio):
+        self.audio_processor.process_audio(audio)
+    
     def closeEvent(self, event):
         self.audio_processor.stop()  # Stop the audio processing thread
         event.accept()

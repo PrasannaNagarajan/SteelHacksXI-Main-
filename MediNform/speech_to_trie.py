@@ -5,7 +5,7 @@ import trie as t
 
 class SearchSpeech:
     # initialization function
-    def __init__(self, age):
+    def __init__(self):
         self.ret_val = ""
         self.working_string = ""
         
