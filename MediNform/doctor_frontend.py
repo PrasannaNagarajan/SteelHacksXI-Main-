@@ -1,4 +1,5 @@
 import sys
+from list_choose import *
 
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtWidgets import QApplication, QPushButton, QMainWindow, QLabel, QLineEdit,\
@@ -95,6 +96,8 @@ class MainWindow(QMainWindow):
             age_value = self.age_input.text()
             print("Patient's age is " + age_value)
             print("recording...")
+            self.patient_window = ComboBoxExample()
+            self.patient_window.show()
         else:
             print("Input patient age")
 
