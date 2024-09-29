@@ -33,7 +33,7 @@ class MainWindow(QMainWindow):
         self.name_input.setFixedWidth(200)
         self.name_input.setStyleSheet("QLineEdit { border: 2px solid #000000; padding: 5px; }")
         #patient age text box
-        self.age_lable = self.age_label = QLabel("Patient Age")
+        self.age_label = self.age_label = QLabel("Patient Age")
         self.age_input = QLineEdit()
         self.age_input.setFixedWidth(50)
         self.age_input.setStyleSheet("QLineEdit { border: 2px solid #000000; padding: 5px; }")
@@ -48,32 +48,51 @@ class MainWindow(QMainWindow):
 
         self.notes_label = QLabel("Patient Notes")
         self.notes_input = QTextEdit()
-        self.notes_input.setFixedWidth(400)
+        self.notes_input.setFixedWidth(480)
         self.notes_input.setFixedHeight(150)
         self.notes_input.setStyleSheet("QTextEdit { border: 2px solid #000000}")
 
         self.notes.addWidget(self.notes_label)
         self.notes.addWidget(self.notes_input)
-        #add patient info to main window
+
+        #stop and start recording button structures
+        self.buttons = QHBoxLayout()
+        self.start_button = QPushButton("Start Recording Transcript ▶")
+        self.start_button.setFixedHeight(30)
+        self.start_button.setFixedWidth(300)
+        self.start_button.clicked.connect(self.start_clicked)
+        self.stop_button = QPushButton("Stop Recording Transcript ■")
+        self.stop_button.setFixedHeight(30)
+        self.stop_button.setFixedWidth(300)
+        self.stop_button.clicked.connect(self.stop_clicked)
+
+
+        self.buttons.addWidget(self.start_button)
+        self.buttons.addWidget(self.stop_button)
+
+
+        #add widgets info to main window
         self.main_layout.addLayout(self.patient_info)
         self.main_layout.addLayout(self.notes)
+        self.main_layout.addLayout(self.buttons)
 
-
-        #self.notes_box(layout)
+        #initialize main window
         self.setLayout(self.main_layout)
 
 
-    def notes_box(self,layout):
+    def start_clicked(self):
+        #button = QPushButton("Start Recording")
+        #layout.addWidget(button)
+        if self.age_input.text() != "":
+            age_value = self.age_input.text()
+            print("Patient's age is " + age_value)
+            print("recording...")
+        else:
+            print("Input patient age")
 
-        self.text_box = QLineEdit()
-        layout.addWidget(self.text_box)
-
-    def start_recording(self,layout):
-        button = QPushButton("Start Recording")
-        layout.addWidget(button)
-
-    def stop_recording(self):
-        button = QPushButton("Stop Recording")
+    def stop_clicked(self):
+        #button = QPushButton("Stop Recording")
+        print("stopped recording...")
 
 
 
@@ -82,6 +101,3 @@ if __name__ == "__main__":
     window = MainWindow()
     window.show()
     sys.exit(app.exec())
-'''class doctorFrontend:
-    x = st.slider("select a value")
-    st.write(x, "squared is", x*x)'''
