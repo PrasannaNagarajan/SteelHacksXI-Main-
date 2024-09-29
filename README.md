@@ -11,10 +11,6 @@ In addition to providing reassurance, MediNform serves as an essential accessibi
 While just a demo, our team hopes MediNform can spark innovation in the way we approch medical consultations. We hope this demo can showcase how the power of AI can be used to help patients communicate with healthcare professionals. Being sick is stressful enough, so we want to put a focus on taking some of that stress away.
 
 ## Getting Started
-To run this program:
-### Windows
-Run the MediNform executable file
-### Other OS
 Ensure you have the following python libraries installed by using ``pip install``:
 - ``pyqt6``
 - ``speech_recognition``
