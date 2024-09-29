@@ -2,7 +2,6 @@ import google.generativeai as genai
 from google.generativeai.types import HarmCategory, HarmBlockThreshold
 import os
 
-
 class Gemini:
     def __init__(self, age: int):
         self.medical_term = ""
