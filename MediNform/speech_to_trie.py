@@ -91,9 +91,3 @@ class SearchSpeech:
     #cleanup function
     def cleanup(self):
         self.stop_listening(wait_for_stop=False)
-
-stt = SearchSpeech(6)
-
-while(True):
-    if(input() == "q"):
-        break
