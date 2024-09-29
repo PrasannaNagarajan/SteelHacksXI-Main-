@@ -32,7 +32,7 @@ Once the doctor is done with their consultation, they will press the stop transc
 
 ## Authors
 Hunter Foster
-Email: 
+Email: huf5@pitt.edu
 @huf5
 
 Michael Puthumana
