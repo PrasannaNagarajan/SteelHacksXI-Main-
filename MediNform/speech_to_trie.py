@@ -1,11 +1,12 @@
 import speech_recognition as sr
+import gemini_access as gem
 import re
 import trie as t
 
 
 class SearchSpeech:
     # initialization function
-    def __init__(self):
+    def __init__(self, age):
         #building trie
         input_file = "medical_wordlist.txt"
         self.trie = t.Trie()
@@ -21,6 +22,9 @@ class SearchSpeech:
             word = t.clean_and_concatenate_words(line)
             self.trie.add(word)
         
+        #building gemini
+        self.gemini = gem.Gemini(age)
+        
         #getting microphone
         self.r = sr.Recognizer()
         self.m = sr.Microphone()
@@ -30,8 +34,11 @@ class SearchSpeech:
             self.r.adjust_for_ambient_noise(source)
             
         #starting listening
-        self.stop_listening = self.r.listen_in_background(self.m, self.callback, phrase_time_limit = 5)
+        self.stop_listening = self.r.listen_in_background(self.m, self.callback, phrase_time_limit = 2)
         self.working_string = ""
+        
+        #setup complete
+        print("Begin Speaking")
     
     # cleaning word function
     def clean_word(self,word):
@@ -48,7 +55,6 @@ class SearchSpeech:
         try:
             # recognize data using Google Speech Recognition, storing in string
             output = recognizer.recognize_google(audio)
-            print(output)
 
             #splitting text into array
             output_arr = output.split(" ")
@@ -65,7 +71,7 @@ class SearchSpeech:
                 #checking if txt is word
                 elif self.trie.search_key(self.working_string):
                     #call function through gemini
-                    print("Is a word!")
+                    print(self.gemini.prompt_gemini(self.working_string))
                     self.working_string = ""
 
                 #neither
@@ -75,7 +81,7 @@ class SearchSpeech:
         except sr.UnknownValueError:
             if self.trie.search_key(self.working_string):
                     #call function through gemini
-                    print("Is a word!")
+                    print(self.gemini.prompt_gemini(self.working_string))
                     self.working_string = ""
             text = ""
         except sr.RequestError as e:
@@ -86,7 +92,7 @@ class SearchSpeech:
     def cleanup(self):
         self.stop_listening(wait_for_stop=False)
 
-stt = SearchSpeech()
+stt = SearchSpeech(6)
 
 while(True):
     if(input() == "q"):

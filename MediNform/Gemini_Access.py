@@ -39,7 +39,6 @@ class Gemini:
         """
         This function allows the user to input medical terms interactively.
         """
-
         response = self.med_model.generate_content(
             med_term,
             safety_settings={

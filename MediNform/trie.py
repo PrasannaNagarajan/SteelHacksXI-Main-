@@ -36,8 +36,12 @@ class Trie:
                 return False  
 
             curr = curr.child[index]
-
-        return curr.wordend 
+            
+        if curr.wordend == True:
+            curr.wordend = False
+            return True
+        
+        return False
     
     def search_prefix(self, prefix):
         curr = self.root
@@ -61,18 +65,3 @@ def clean_and_concatenate_words(line):
     concatenated_word = ''.join(cleaned_line.split())
     
     return concatenated_word
-
-
-input_file = "medical_wordlist.txt"
-trie = Trie()
-
-file = open(input_file, encoding="utf8")
-    
-while True:
-    line = file.readline()
-
-    if line == "":
-        break
-
-    word = clean_and_concatenate_words(line)
-    trie.add(word)
