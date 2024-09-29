@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="df6f2048-1ed2-4202-ba3f-defd21d3421e" name="Changes" comment="Rename">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MediNform/doctor_frontend.py" beforeDir="false" afterPath="$PROJECT_DIR$/MediNform/doctor_frontend.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,8 +57,18 @@
     <MESSAGE value="Rename" />
     <option name="LAST_COMMIT_MESSAGE" value="Rename" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/MediNform/speech_to_trie.py</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SteelHacksXI$doctor_frontend.coverage" NAME="doctor_frontend Coverage Results" MODIFIED="1727584708071" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MediNform" />
+    <SUITE FILE_PATH="coverage/SteelHacksXI$doctor_frontend.coverage" NAME="doctor_frontend Coverage Results" MODIFIED="1727584752511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MediNform" />
     <SUITE FILE_PATH="coverage/SteelHacksXI$doctorFrontend.coverage" NAME="doctorFrontend Coverage Results" MODIFIED="1727577643750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MediNform" />
   </component>
 </project>
