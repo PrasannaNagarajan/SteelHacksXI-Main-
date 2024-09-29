@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="df6f2048-1ed2-4202-ba3f-defd21d3421e" name="Changes" comment="added start and stop buttons and stored age variable">
+      <change beforePath="$PROJECT_DIR$/MediNform/doctorFrontend.py" beforeDir="false" afterPath="$PROJECT_DIR$/MediNform/doctorFrontend.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.doctorFrontend.executor": "Run",
+    "git-widget-placeholder": "main",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task id="LOCAL-00001" summary="Added text boxes to Gui">
+      <option name="closed" value="true" />
+      <created>1727573173396</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1727573173396</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added start and stop buttons and stored age variable">
+      <option name="closed" value="true" />
+      <created>1727575629384</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1727575629384</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added text boxes to Gui" />
+    <MESSAGE value="added start and stop buttons and stored age variable" />
+    <option name="LAST_COMMIT_MESSAGE" value="added start and stop buttons and stored age variable" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SteelHacksXI$doctorFrontend.coverage" NAME="doctorFrontend Coverage Results" MODIFIED="1727577643750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MediNform" />
+  </component>
+</project>
