@@ -42,7 +42,7 @@ class Trie:
     def search_prefix(self, prefix):
         curr = self.root
 
-    # Traverse through each character in the prefix
+        # Traverse through each character in the prefix
         for c in prefix:
             index = ord(c) - ord('a')
             if curr.child[index] is None:  # If the child doesn't exist, the prefix is not present
