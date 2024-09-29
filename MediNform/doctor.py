@@ -1,5 +1,6 @@
 import sys
-import list_choose
+import patient
+import speech_to_trie as sst
 
 from PyQt6.QtCore import QSize, Qt
 from PyQt6.QtWidgets import QApplication, QPushButton, QMainWindow, QLabel, QLineEdit,\
@@ -88,14 +89,15 @@ class MainWindow(QMainWindow):
         #initialize main window
         self.setLayout(self.main_layout)
 
+
     def start_clicked(self):
         #button = QPushButton("Start Recording")
         #layout.addWidget(button)
-        if self.age_input.text() != "":
+        if self.age_input.text() != "" and self.age_input.text().isnumeric():
             age_value = self.age_input.text()
             print("Patient's age is " + age_value)
             print("recording...")
-            self.patient_window = list_choose.PatientWindow()
+            self.patient_window = patient.PatientWindow(age_value)
             self.patient_window.show()
         else:
             print("Input patient age")
@@ -103,6 +105,7 @@ class MainWindow(QMainWindow):
     def stop_clicked(self):
         #button = QPushButton("Stop Recording")
         print("stopped recording...")
+        self.patient_window.audio_processor.stop()
 
 
 

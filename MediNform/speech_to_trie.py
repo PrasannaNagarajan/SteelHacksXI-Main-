@@ -1,4 +1,3 @@
-import speech_recognition as sr
 import gemini_access as gem
 import re
 import trie as t
@@ -26,9 +25,6 @@ class SearchSpeech:
             self.trie.add(word)
         
         self.gemini = None
-        
-        #setup complete
-        print("Begin Speaking")
     
     # cleaning word function
     def clean_word(self,word):

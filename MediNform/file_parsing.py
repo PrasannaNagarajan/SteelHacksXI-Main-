@@ -3,14 +3,11 @@ import re
 all_inputs = ""
 
 def parse_input(input_string):
-    
-    global all_inputs
-    
     patterns = {
         'T': r'<T>(.*?)</T>',
         'NM': r'<NM>(.*?)</NM>',
         'SY': r'<SY>(.*?)</SY>',
-        'CS': r'<CS>(.*?)</CS>',
+        'CAS': r'<CAS>(.*?)</CAS>',
         'TR': r'<TR>(.*?)</TR>',
         'PRE': r'<PRE>(.*?)</PRE>',
         'OP': r'<OP>(.*?)</OP>',
@@ -34,31 +31,26 @@ def parse_input(input_string):
 
     # Initialize the array based on the type
     if word_type == 'Disease' or word_type == "Injury":
-        all_inputs += input_string + "\n"
         array = [None]*5  
         array[0] = word_type
-        required_tags = ['NM', 'SY', 'CS', 'TR']
+        required_tags = ['NM', 'SY', 'CAS', 'TR']
         indices = [1, 2, 3, 4]
     elif word_type == 'Operation':
-        all_inputs += input_string + "\n"
         array = [None]*6  
         array[0] = word_type
         required_tags = ['NM', 'PRE', 'OP', 'POS', 'RT']
         indices = [1, 2, 3, 4, 5]
     elif word_type == 'Treatment':
-        all_inputs += input_string + "\n"
         array = [None]*4  
         array[0] = word_type
         required_tags = ['NM', 'TRI', 'TRD']
         indices = [1, 2, 3]
     elif word_type == 'Drug':
-        all_inputs += input_string + "\n"
         array = [None]*5  
         array[0] = word_type
         required_tags = ['GNM', 'TNM', 'US', 'SDE']
         indices = [1, 2, 3, 4]
     elif word_type == 'Anatomical Term':
-        all_inputs += input_string + "\n"
         array = [None]*4  
         array[0] = word_type
         required_tags = ['NM', 'BP', 'UBP']
