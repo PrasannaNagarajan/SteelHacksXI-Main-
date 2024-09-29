@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df6f2048-1ed2-4202-ba3f-defd21d3421e" name="Changes" comment="added start and stop buttons and stored age variable">
-      <change beforePath="$PROJECT_DIR$/MediNform/doctorFrontend.py" beforeDir="false" afterPath="$PROJECT_DIR$/MediNform/doctorFrontend.py" afterDir="false" />
+    <list default="true" id="df6f2048-1ed2-4202-ba3f-defd21d3421e" name="Changes" comment="Rename">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +18,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Python.doctorFrontend.executor": "Run",
+    "Python.doctor_frontend.executor": "Run",
     "git-widget-placeholder": "main",
     "node.js.selected.package.tslint": "(autodetect)"
   }
@@ -39,15 +40,35 @@
       <option name="project" value="LOCAL" />
       <updated>1727575629384</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Rename">
+      <option name="closed" value="true" />
+      <created>1727578664529</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1727578664529</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added text boxes to Gui" />
     <MESSAGE value="added start and stop buttons and stored age variable" />
-    <option name="LAST_COMMIT_MESSAGE" value="added start and stop buttons and stored age variable" />
+    <MESSAGE value="Rename" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rename" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/MediNform/speech_to_trie.py</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/SteelHacksXI$doctor_frontend.coverage" NAME="doctor_frontend Coverage Results" MODIFIED="1727584752511" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MediNform" />
     <SUITE FILE_PATH="coverage/SteelHacksXI$doctorFrontend.coverage" NAME="doctorFrontend Coverage Results" MODIFIED="1727577643750" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MediNform" />
   </component>
 </project>
