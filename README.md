@@ -8,6 +8,8 @@ MediNform leverages speech-to-text technology to capture live doctor-patient int
 
 In addition to providing reassurance, MediNform serves as an essential accessibility tool for individuals with communication challenges, such as anxiety, hearing loss and muteness. The platform adjusts its explanations based on the patient’s age, ensuring that younger patients receive simplified, easy-to-understand information, while older patients benefit from more detailed, technical descriptions. This adaptability promotes a better understanding of health issues, fostering a more comfortable and informed experience for all patients.
 
+While just a demo, our team hopes MediNform can spark innovation in the way we approch medical consultations. We hope this demo can showcase how the power of AI can be used to help patients communicate with healthcare professionals. Being sick is stressful enough, so we want to put a focus on taking some of that stress away.
+
 ## Getting Started
 To run this program:
 ### Windows
